@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Global Time and Date - Interactive World Clock & Time Zone Converter</title>
+    <meta id="page-desc" name="description" content="Effortlessly convert time and date across global time zones. Visual interactive time grid, meeting planner, and city difference calculator.">
+    <meta name="keywords" content="global time and date, time zone converter, world clock, meeting planner, PST to EST, GMT to IST">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">🌐 GlobalTimeAndDate</div>
+        <nav class="nav-links">
+            <a href="#tool">Converter</a>
+            <a href="#how-to-use">How to Use</a>
+            <a href="#popular-conversions">Top Conversions</a>
+            <a href="#about">About</a>
+            <a href="#faq">FAQ</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section id="hero-section" class="hero-block">
+            <h1 id="dynamic-h1">Interactive World Clock & Time Zone Converter</h1>
+            <p id="dynamic-subtext">Compare local times, plan international meetings, and track global time zones seamlessly with our visual hour grid.</p>
+        </section>
+
+        <section id="tool" class="tool-card">
+           <div class="search-box">
+    <div class="search-arrows">
+        <button type="button" id="add-top-btn" class="arrow-select-btn" title="Add to Top">▲</button>
+        <button type="button" id="add-bottom-btn" class="arrow-select-btn" title="Add to Bottom">▼</button>
+    </div>
+    <input type="text" id="city-input" placeholder="Type cities (e.g. India, China, New York)..." autocomplete="off">
+    <button type="button" id="compare-btn" class="btn-primary">⚡ Compare Only These</button>
+    <button type="button" id="add-btn" class="btn-secondary">+ Add to List</button>
+</div>
+               <div class="control-actions">
+    <div class="date-picker-wrapper">
+        <label for="meeting-date" style="font-size: 0.8rem; color: var(--text-secondary);">Date:</label>
+        <input type="date" id="meeting-date" class="date-picker-input">
+    </div>
+    <button type="button" id="install-btn" class="btn-primary-app">📲 Install App</button>
+    <button type="button" id="toggle-format" class="btn-secondary">12h / 24h</button>
+    <button type="button" id="share-btn" class="btn-secondary">🔗 Share View</button>
+    <button type="button" id="reset-btn" class="btn-secondary">Reset Clocks</button>
+</div>
+
+            <!-- Visual Horizontal Time Slider Grid -->
+            <div id="timezone-grid" class="grid-wrapper"></div>
+        </section>
+
+        <section id="pseo-info-block" class="content-card dynamic-seo-card hidden">
+            <h2 id="pseo-title">Conversion Breakdown</h2>
+            <div id="pseo-content"></div>
+        </section>
+
+        <section id="how-to-use" class="content-card">
+            <h2>How to Use Global Time and Date Converter</h2>
+            <ol class="guide-list">
+                <li><strong>Add Locations:</strong> Type any city, country, or timezone code in the search box and click <strong>+ Add Location</strong>.</li>
+                <li><strong>Select Date:</strong> Use the built-in calendar picker to calculate time zone shifts and meeting slots for future dates.</li>
+                <li><strong>Interactive Tile Grid:</strong> Click or tap on any 24-hour horizontal tile to lock a target hour. All cities automatically shift and highlight corresponding local times.</li>
+                <li><strong>Overlapping Work Hours:</strong> Tiles shaded in green highlight local working hours (9 AM - 5 PM) for quick international team meeting planning.</li>
+            </ol>
+        </section>
+
+        <section id="popular-conversions" class="content-card">
+            <h2>Popular Global Time Conversions</h2>
+            <div class="link-grid">
+                <a href="/pst-to-est">PST to EST Converter</a>
+                <a href="/est-to-gmt">EST to GMT Converter</a>
+                <a href="/pst-to-gmt">PST to GMT Converter</a>
+                <a href="/gmt-to-ist">GMT to IST Converter</a>
+                <a href="/ist-to-pst">IST to PST Converter</a>
+                <a href="/cst-to-est">CST to EST Converter</a>
+                <a href="/new-york-to-london">New York to London Time</a>
+                <a href="/london-to-tokyo">London to Tokyo Time</a>
+                <a href="/san-francisco-to-london">San Francisco to London Time</a>
+                <a href="/sydney-to-los-angeles">Sydney to Los Angeles Time</a>
+            </div>
+        </section>
+
+        <section id="faq" class="content-card">
+            <h2>Frequently Asked Questions (FAQ)</h2>
+            <div class="faq-item">
+                <h3>Q: How does Global Time and Date handle Daylight Saving Time (DST)?</h3>
+                <p>A: Our system dynamically factors in official regional time zone databases. Daylight Saving Time adjustments are applied automatically based on selected calendar dates.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Q: Is Global Time and Date free for personal and commercial use?</h3>
+                <p>A: Yes, Global Time and Date is 100% free with unlimited location tracking, visual time comparison, and meeting scheduling tools.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="about.html">About Us</a> |
+            <a href="how-to-use.html">How to Use</a> |
+            <a href="privacy.html">Privacy Policy</a> |
+            <a href="terms.html">Terms of Service</a> |
+            <a href="disclaimer.html">Disclaimer</a> |
+            <a href="faq.html">FAQ</a> |
+            <a href="sitemap.xml">Sitemap</a>
+        </div>
+        <p>&copy; 2026 Global Time and Date. All rights reserved.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

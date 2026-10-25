@@ -14,10 +14,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="page-title">Global Time and Date - Interactive World Clock & Time Zone Converter</title>
     <meta id="page-desc" name="description" content="Effortlessly convert time and date across global time zones. Visual interactive time grid, meeting planner, and city difference calculator.">
-    <meta name="keywords" content="global time and date, time zone converter, world clock, meeting planner, PST to EST, GMT to IST">
+    <meta name="keywords" content="global time and date, time zone converter, world clock, meeting planner, PST to EST, GMT to IST, India to USA time, time difference between India and UK, IST to PST time difference, 9 AM in India is what time in US">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#0f172a">
     <link rel="stylesheet" href="styles.css">
+
+    <!-- Structured Data Schema for Rich Google Snippets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "What is the time difference between India and USA?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "India Standard Time (IST) is 9.5 to 12.5 hours ahead of major USA time zones (PST, EST, CST) depending on Daylight Saving Time."
+        }
+      }, {
+        "@type": "Question",
+        "name": "What time is 9 AM IST in US?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "9 AM in India (IST) is typically 8:30 PM PST (previous night) or 11:30 PM EST (previous night) in the United States."
+        }
+      }, {
+        "@type": "Question",
+        "name": "What is the time difference between India and UK?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "India Standard Time (IST) is 4 hours and 30 minutes ahead of British Summer Time (BST) and 5 hours and 30 minutes ahead of GMT."
+        }
+      }]
+    }
+    </script>
 </head>
 <body>
     <header class="navbar">
@@ -104,52 +134,118 @@
                 <h3>Q: Is Global Time and Date free for personal and commercial use?</h3>
                 <p>A: Yes, Global Time and Date is 100% free with unlimited location tracking, visual time comparison, and meeting scheduling tools.</p>
             </div>
+            <div class="faq-item">
+                <h3>Q: What is the time difference between India and USA, UK, Canada, or Dubai?</h3>
+                <p>A: India (IST) is 9.5 to 12.5 hours ahead of the US (PST/EST), 4.5 to 5.5 hours ahead of the UK, 9.5 to 12.5 hours ahead of Canada, and 1.5 hours ahead of Dubai (GST).</p>
+            </div>
+            <div class="faq-item">
+                <h3>Q: What time is 9 AM, 11 AM, 6 PM, or 7 PM in India in US time?</h3>
+                <p>A: 9 AM IST is 10:30 PM EST (prev day) / 7:30 PM PST (prev day). 11 AM IST is 12:30 AM EST / 9:30 PM PST. 6 PM IST is 7:30 AM EST / 4:30 AM PST. 7 PM IST is 8:30 AM EST / 5:30 AM PST.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Q: Can I view world time with seconds and live time zone difference?</h3>
+                <p>A: Yes, our visual grid automatically syncs real-time clocks with second-level precision for any selected timezone combination worldwide.</p>
+            </div>
         </section>
     </main>
 
-   <div class="seo-links" style="margin-top: 40px; padding: 20px; background: #f9f9f9; border-radius: 8px;">
-    <h3>Popular Time Zone Conversions</h3>
-    <ul style="list-style-type: none; padding: 0; display: flex; gap: 15px; flex-wrap: wrap;">
-        <li><a href="ist-to-pst.html">IST to PST Converter</a></li>
-        <li><a href="gmt-to-ist.html">GMT to IST Converter</a></li>
-        <li><a href="london-to-tokyo.html">London to Tokyo Converter</a></li>
-    </ul>
-</div>
-<div class="universal-search" style="margin-top: 30px; margin-bottom: 20px; padding: 25px; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-    <h3>Convert Any Timezone Worldwide</h3>
-    <p>Enter IANA timezones (e.g., America/New_York, Europe/London, Asia/Kolkata)</p>
-    
-    <form action="converter.html" method="GET" style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 15px;">
-        <input type="text" name="from" placeholder="From (e.g. America/New_York)" required style="padding: 10px; flex: 1; min-width: 200px; border: 1px solid #ccc; border-radius: 4px;">
-        <input type="text" name="to" placeholder="To (e.g. Asia/Kolkata)" required style="padding: 10px; flex: 1; min-width: 200px; border: 1px solid #ccc; border-radius: 4px;">
-        <button type="submit" style="padding: 10px 20px; background: #0070f3; color: white; border: none; border-radius: 4px; cursor: pointer;">Convert Time</button>
-    </form>
-</div>
-  <div class="global-cities-directory" style="margin-top: 40px; padding: 25px; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-    <h3 style="margin-bottom: 15px;">Popular World Time Conversions & Cities</h3>
-    <p style="margin-bottom: 20px; color: #666;">Explore real-time time zone conversions between major global financial hubs and cities:</p>
-    
-    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px;">
-        <a href="converter.html?from=America/New_York&to=Asia/Kolkata" style="color: #0070f3; text-decoration: none; padding: 5px 0;">New York to Kolkata Time</a>
-        <a href="converter.html?from=Europe/London&to=America/New_York" style="color: #0070f3; text-decoration: none; padding: 5px 0;">London to New York Time</a>
-        <a href="converter.html?from=Asia/Tokyo&to=Australia/Sydney" style="color: #0070f3; text-decoration: none; padding: 5px 0;">Tokyo to Sydney Time</a>
-        <a href="converter.html?from=Asia/Dubai&to=Europe/London" style="color: #0070f3; text-decoration: none; padding: 5px 0;">Dubai to London Time</a>
-        <a href="converter.html?from=America/Los_Angeles&to=Asia/Kolkata" style="color: #0070f3; text-decoration: none; padding: 5px 0;">Los Angeles to IST</a>
-        <a href="converter.html?from=Europe/Paris&to=Asia/Tokyo" style="color: #0070f3; text-decoration: none; padding: 5px 0;">Paris to Tokyo Time</a>
-        <a href="converter.html?from=Asia/Singapore&to=America/New_York" style="color: #0070f3; text-decoration: none; padding: 5px 0;">Singapore to New York</a>
-        <a href="converter.html?from=Australia/Melbourne&to=Europe/London" style="color: #0070f3; text-decoration: none; padding: 5px 0;">Melbourne to London</a>
+    <div class="seo-links" style="margin-top: 40px; padding: 20px; background: #f9f9f9; border-radius: 8px;">
+        <h3>Popular Time Zone Conversions</h3>
+        <ul style="list-style-type: none; padding: 0; display: flex; gap: 15px; flex-wrap: wrap;">
+            <li><a href="ist-to-pst">IST to PST Converter</a></li>
+            <li><a href="gmt-to-ist">GMT to IST Converter</a></li>
+            <li><a href="london-to-tokyo">London to Tokyo Converter</a></li>
+        </ul>
     </div>
+
+    <div class="universal-search" style="margin-top: 30px; margin-bottom: 20px; padding: 25px; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+        <h3>Convert Any Timezone Worldwide</h3>
+        <p>Enter IANA timezones (e.g., America/New_York, Europe/London, Asia/Kolkata)</p>
+        
+        <form action="converter" method="GET" style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 15px;">
+            <input type="text" name="from" placeholder="From (e.g. America/New_York)" required style="padding: 10px; flex: 1; min-width: 200px; border: 1px solid #ccc; border-radius: 4px;">
+            <input type="text" name="to" placeholder="To (e.g. Asia/Kolkata)" required style="padding: 10px; flex: 1; min-width: 200px; border: 1px solid #ccc; border-radius: 4px;">
+            <button type="submit" style="padding: 10px 20px; background: #0070f3; color: white; border: none; border-radius: 4px; cursor: pointer;">Convert Time</button>
+        </form>
     </div>
+
+    <!-- Dynamic pSEO Thousand Long-Tail Keyword Matrix -->
+    <div class="global-cities-directory" style="margin-top: 40px; padding: 25px; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+        <h3 style="margin-bottom: 15px;">Popular World Time Conversions & Cities</h3>
+        <p style="margin-bottom: 20px; color: #666;">Explore real-time time zone conversions between major global financial hubs, countries, and specific hours:</p>
+        
+        <div id="dynamic-pseo-links" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px;">
+            <a href="converter?from=America/New_York&to=Asia/Kolkata" style="color: #0070f3; text-decoration: none; padding: 5px 0;">New York to Kolkata Time</a>
+            <a href="converter?from=Europe/London&to=America/New_York" style="color: #0070f3; text-decoration: none; padding: 5px 0;">London to New York Time</a>
+            <a href="converter?from=Asia/Tokyo&to=Australia/Sydney" style="color: #0070f3; text-decoration: none; padding: 5px 0;">Tokyo to Sydney Time</a>
+            <a href="converter?from=Asia/Dubai&to=Europe/London" style="color: #0070f3; text-decoration: none; padding: 5px 0;">Dubai to London Time</a>
+            <a href="converter?from=America/Los_Angeles&to=Asia/Kolkata" style="color: #0070f3; text-decoration: none; padding: 5px 0;">Los Angeles to IST</a>
+            <a href="converter?from=Europe/Paris&to=Asia/Tokyo" style="color: #0070f3; text-decoration: none; padding: 5px 0;">Paris to Tokyo Time</a>
+            <a href="converter?from=Asia/Singapore&to=America/New_York" style="color: #0070f3; text-decoration: none; padding: 5px 0;">Singapore to New York</a>
+            <a href="converter?from=Australia/Melbourne&to=Europe/London" style="color: #0070f3; text-decoration: none; padding: 5px 0;">Melbourne to London</a>
+            <a href="converter?from=Asia/Kolkata&to=America/New_York" style="color: #0070f3; text-decoration: none; padding: 5px 0;">Time Difference India and USA</a>
+            <a href="converter?from=Asia/Kolkata&to=Europe/London" style="color: #0070f3; text-decoration: none; padding: 5px 0;">Time Difference India and UK</a>
+            <a href="converter?from=Asia/Kolkata&to=Asia/Dubai" style="color: #0070f3; text-decoration: none; padding: 5px 0;">Time Difference India and Dubai</a>
+            <a href="converter?from=Asia/Kolkata&to=Europe/Berlin" style="color: #0070f3; text-decoration: none; padding: 5px 0;">Time Difference India and Germany</a>
+            <a href="converter?from=Asia/Kolkata&to=America/Toronto" style="color: #0070f3; text-decoration: none; padding: 5px 0;">Time Difference India and Canada</a>
+            <a href="converter?from=Asia/Kolkata&to=America/Jamaica" style="color: #0070f3; text-decoration: none; padding: 5px 0;">Time Difference India and West Indies</a>
+        </div>
+    </div>
+
+    <!-- Script to Generate Long-Tail Combinations dynamically for SEO Bots -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const container = document.getElementById("dynamic-pseo-links");
+            const cities = [
+                { name: "India (IST)", tz: "Asia/Kolkata" },
+                { name: "USA (EST)", tz: "America/New_York" },
+                { name: "USA (PST)", tz: "America/Los_Angeles" },
+                { name: "UK (London)", tz: "Europe/London" },
+                { name: "Canada (Toronto)", tz: "America/Toronto" },
+                { name: "Dubai (GST)", tz: "Asia/Dubai" },
+                { name: "Australia (Sydney)", tz: "Australia/Sydney" },
+                { name: "Germany (Berlin)", tz: "Europe/Berlin" },
+                { name: "Singapore", tz: "Asia/Singapore" }
+            ];
+
+            const times = ["9 AM", "11 AM", "6 PM", "7 PM", "8 PM", "9 PM"];
+
+            // Programmatically generate city-pair combinations for search indexers
+            cities.forEach(c1 => {
+                cities.forEach(c2 => {
+                    if (c1.tz !== c2.tz) {
+                        const link = document.createElement("a");
+                        link.href = `converter?from=${encodeURIComponent(c1.tz)}&to=${encodeURIComponent(c2.tz)}`;
+                        link.style.cssText = "color: #0070f3; text-decoration: none; padding: 5px 0;";
+                        link.innerText = `${c1.name} to ${c2.name} Time Converter`;
+                        container.appendChild(link);
+                    }
+                });
+            });
+
+            // Programmatically generate hour-specific query combinations
+            times.forEach(t => {
+                const link = document.createElement("a");
+                link.href = `converter?from=Asia/Kolkata&to=America/New_York`;
+                link.style.cssText = "color: #0070f3; text-decoration: none; padding: 5px 0;";
+                link.innerText = `${t} in India is what time in USA`;
+                container.appendChild(link);
+            });
+        });
+    </script>
+
     <script src="app.js"></script>
-  <div class="popular-conversions" style="margin: 20px 0; padding: 15px; background: #fff; border-radius: 8px;">
-    <h3>Popular Time Zone Conversions</h3>
-    <p>
-        <a href="ist-to-pst.html" style="margin-right: 15px;">IST to PST Converter</a>
-        <a href="gmt-to-ist.html" style="margin-right: 15px;">GMT to IST Converter</a>
-        <a href="london-to-tokyo.html">London to Tokyo Converter</a>
-    </p>
-</div>
-  <footer class="footer">
+
+    <div class="popular-conversions" style="margin: 20px 0; padding: 15px; background: #fff; border-radius: 8px;">
+        <h3>Popular Time Zone Conversions</h3>
+        <p>
+            <a href="ist-to-pst" style="margin-right: 15px;">IST to PST Converter</a>
+            <a href="gmt-to-ist" style="margin-right: 15px;">GMT to IST Converter</a>
+            <a href="london-to-tokyo">London to Tokyo Converter</a>
+        </p>
+    </div>
+
+    <footer class="footer">
         <div class="footer-links">
             <a href="about">About Us</a> |
             <a href="how-to-use">How to Use</a> |

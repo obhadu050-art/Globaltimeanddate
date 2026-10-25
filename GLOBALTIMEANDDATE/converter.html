@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Global Time Zone Converter</title>
+    <meta name="description" content="Instantly convert time between any cities and time zones worldwide with live real-time updates.">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="faq.html">FAQ</a>
+        </nav>
+    </header>
+    
+    <main style="padding: 20px; max-width: 800px; margin: auto;">
+        <h1 id="main-heading">World Time Zone Converter</h1>
+        <p id="sub-heading">Real-time time conversion for global cities.</p>
+        
+        <div class="converter-box" style="background: #f4f4f4; padding: 20px; border-radius: 8px; margin-top: 20px;">
+            <h2>Live Conversion</h2>
+            <p id="conversion-result">Loading live time conversion...</p>
+        </div>
+    </main>
+
+    <script>
+        // URL se city names extract karna (jaise ?from=London&to=Tokyo)
+        const params = new URLSearchParams(window.location.search);
+        const fromCity = params.get('from') || 'UTC';
+        const toCity = params.get('to') || 'IST';
+
+        document.getElementById('page-title').innerText = `${fromCity.toUpperCase()} to ${toCity.toUpperCase()} Time Converter`;
+        document.getElementById('main-heading').innerText = `${fromCity.toUpperCase()} to ${toCity.toUpperCase()} Time Zone Converter`;
+        document.getElementById('sub-heading').innerText = `Easily convert ${fromCity} time to ${toCity} time with live updates.`;
+
+        function updateDynamicTime() {
+            const now = new Date();
+            try {
+                const time1 = new Intl.DateTimeFormat('en-US', { timeZone: fromCity, dateStyle: 'medium', timeStyle: 'medium' }).format(now);
+                const time2 = new Intl.DateTimeFormat('en-US', { timeZone: toCity, dateStyle: 'medium', timeStyle: 'medium' }).format(now);
+                document.getElementById('conversion-result').innerHTML = `<strong>${fromCity}:</strong> ${time1}<br><br><strong>${toCity}:</strong> ${time2}`;
+            } catch (e) {
+                document.getElementById('conversion-result').innerText = `Invalid timezones specified in URL.`;
+            }
+        }
+
+        updateDynamicTime();
+        setInterval(updateDynamicTime, 1000);
+    </script>
+</body>
+</html>

@@ -399,3 +399,33 @@ function initPWA() {
         }
     });
 }
+// pSEO City-to-City Dynamic Time Converter
+function updateConversions() {
+    const path = window.location.pathname;
+    const resultEl = document.getElementById('conversion-result');
+    if (!resultEl) return;
+
+    const now = new Date();
+
+    if (path.includes('ist-to-pst.html')) {
+        const istTime = new Intl.DateTimeFormat('en-US', { timeZone: 'Asia/Kolkata', dateStyle: 'medium', timeStyle: 'medium' }).format(now);
+        const pstTime = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Los_Angeles', dateStyle: 'medium', timeStyle: 'medium' }).format(now);
+        resultEl.innerHTML = `<strong>Current IST:</strong> ${istTime}<br><br><strong>Converted PST:</strong> ${pstTime}`;
+    } 
+    else if (path.includes('gmt-to-ist.html')) {
+        const gmtTime = new Intl.DateTimeFormat('en-US', { timeZone: 'Etc/GMT', dateStyle: 'medium', timeStyle: 'medium' }).format(now);
+        const istTime = new Intl.DateTimeFormat('en-US', { timeZone: 'Asia/Kolkata', dateStyle: 'medium', timeStyle: 'medium' }).format(now);
+        resultEl.innerHTML = `<strong>Current GMT:</strong> ${gmtTime}<br><br><strong>Converted IST:</strong> ${istTime}`;
+    } 
+    else if (path.includes('london-to-tokyo.html')) {
+        const londonTime = new Intl.DateTimeFormat('en-US', { timeZone: 'Europe/London', dateStyle: 'medium', timeStyle: 'medium' }).format(now);
+        const tokyoTime = new Intl.DateTimeFormat('en-US', { timeZone: 'Asia/Tokyo', dateStyle: 'medium', timeStyle: 'medium' }).format(now);
+        resultEl.innerHTML = `<strong>Current London Time:</strong> ${londonTime}<br><br><strong>Converted Tokyo Time:</strong> ${tokyoTime}`;
+    }
+}
+
+// Run immediately and update every second
+if (document.getElementById('conversion-result')) {
+    updateConversions();
+    setInterval(updateConversions, 1000);
+}

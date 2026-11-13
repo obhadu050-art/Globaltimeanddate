@@ -348,6 +348,68 @@ body {
     color: var(--text-secondary);
     text-decoration: none;
     margin: 0 0.5rem;
+}/* --- Mobile Responsive Fixes --- */
+@media screen and (max-width: 768px) {
+  /* Container ko mobile screen par fit karne ke liye */
+  body {
+    overflow-x: hidden;
+    padding: 10px;
+  }
+
+  .container {
+    width: 100% !important;
+    padding: 10px !important;
+    margin: 0 auto !important;
+  }
+
+  /* Navbar ko mobile friendly banana */
+  .navbar {
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px 10px;
+    text-align: center;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  /* Search box aur buttons ko mobile par stack karna */
+  .search-box {
+    flex-direction: column;
+    align-stretch;
+  }
+
+  .search-box input, 
+  .search-box button {
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  /* Control actions aur buttons grid */
+  .control-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .control-actions button, 
+  .date-picker-wrapper {
+    width: 100% !important;
+  }
+
+  /* Timezone grid ko mobile par scrollable aur safe banana */
+  .grid-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* pSEO link grid ko 1 column karna mobile ke liye */
+  #dynamic-pseo-links {
+    grid-template-columns: 1fr !important;
+  }
 }
 
 .footer-links a:hover {

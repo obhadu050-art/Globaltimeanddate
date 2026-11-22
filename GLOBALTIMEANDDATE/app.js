@@ -34,6 +34,17 @@ document.addEventListener("DOMContentLoaded", () => {
     setInterval(updateLiveClocks, 1000);
 });
 
+function formatLocalDateInput(dateObj) {
+    const y = dateObj.getFullYear();
+    const m = String(dateObj.getMonth() + 1).padStart(2, '0');
+    const d = String(dateObj.getDate()).padStart(2, '0');
+    return `${y}-${m}-${d}`;
+}
+
+function sanitizeClockId(cityName) {
+    return `clock-${cityName.replace(/[^a-zA-Z0-9_-]/g, '')}`;
+}
+
 // Load state if opened via shared link
 function loadStateFromUrl() {
     const params = new URLSearchParams(window.location.search);
@@ -57,8 +68,8 @@ function loadStateFromUrl() {
 
 function initDatePicker() {
     const dateInput = document.getElementById("meeting-date");
-    const todayStr = selectedDate.toISOString().split('T')[0];
-    dateInput.value = todayStr;
+    if (!dateInput) return;
+    dateInput.value = formatLocalDateInput(selectedDate);
 
     dateInput.addEventListener("change", (e) => {
         if (e.target.value) {
@@ -70,17 +81,21 @@ function initDatePicker() {
 }
 
 function initRouter() {
-    const path = window.location.pathname.replace(/^\/+|\/+$/g, '').toLowerCase();
+    const path = window.location.pathname.replace(/^\/+|\/+$/g, '').replace(/\.html$/i, '').toLowerCase();
     
-    if (path.length > 0 && path !== "index.html" && !window.location.search.includes('cities')) {
+    if (path.length > 0 && path !== "index" && !window.location.search.includes('cities')) {
         const parts = path.split("-to-");
         if (parts.length === 2) {
             const source = parts[0].replace(/-/g, " ");
             const target = parts[1].replace(/-/g, " ");
             
-            document.getElementById("dynamic-h1").innerText = `${source.toUpperCase()} to ${target.toUpperCase()} Time Zone Converter`;
-            document.getElementById("page-title").innerText = `${source.toUpperCase()} to ${target.toUpperCase()} Time Zone Converter - Global Time and Date`;
-            document.getElementById("page-desc").content = `Convert time accurately between ${source} and ${target}. View dynamic hour grid and business meeting planner.`;
+            const h1El = document.getElementById("dynamic-h1");
+            const titleEl = document.getElementById("page-title");
+            const descEl = document.getElementById("page-desc");
+
+            if (h1El) h1El.innerText = `${source.toUpperCase()} to ${target.toUpperCase()} Time Zone Converter`;
+            if (titleEl) titleEl.innerText = `${source.toUpperCase()} to ${target.toUpperCase()} Time Zone Converter - Global Time and Date`;
+            if (descEl) descEl.content = `Convert time accurately between ${source} and ${target}. View dynamic hour grid and business meeting planner.`;
             
             const foundSource = findCityData(source);
             const foundTarget = findCityData(target);
@@ -93,9 +108,11 @@ function initRouter() {
             const seoTitle = document.getElementById("pseo-title");
             const seoContent = document.getElementById("pseo-content");
             
-            seoBlock.classList.remove("hidden");
-            seoTitle.innerText = `Converting Time from ${source.toUpperCase()} to ${target.toUpperCase()}`;
-            seoContent.innerHTML = `<p>When planning meetings or calls between <strong>${source.toUpperCase()}</strong> and <strong>${target.toUpperCase()}</strong>, managing time differences is essential. Use the visual grid above to select hours and find overlapping work slots instantly.</p>`;
+            if (seoBlock && seoTitle && seoContent) {
+                seoBlock.classList.remove("hidden");
+                seoTitle.innerText = `Converting Time from ${source.toUpperCase()} to ${target.toUpperCase()}`;
+                seoContent.innerHTML = `<p>When planning meetings or calls between <strong>${source.toUpperCase()}</strong> and <strong>${target.toUpperCase()}</strong>, managing time differences is essential. Use the visual grid above to select hours and find overlapping work slots instantly.</p>`;
+            }
         }
     }
 }
@@ -113,7 +130,7 @@ function updateLiveClocks() {
     const now = new Date();
     selectedCities.forEach((cityName) => {
         const cityData = findCityData(cityName) || { name: cityName, zone: "UTC", tag: "UTC" };
-        const clockEl = document.getElementById(`clock-${cityName.replace(/\s+/g, '')}`);
+        const clockEl = document.getElementById(sanitizeClockId(cityName));
         
         if (clockEl) {
             const cityTimeStr = new Intl.DateTimeFormat('en-US', {
@@ -145,6 +162,7 @@ function convertTimeZone(dateStr, fromZone, toZone) {
 
 function renderGrid() {
     const gridContainer = document.getElementById("timezone-grid");
+    if (!gridContainer) return;
     gridContainer.innerHTML = "";
 
     if (selectedCities.length === 0) {
@@ -176,7 +194,7 @@ function renderGrid() {
         cityInfo.className = "city-info";
         cityInfo.innerHTML = `
             <div class="city-name">${cityData.name} <span style="font-size:0.75rem; color:var(--accent-color);">(${cityData.tag})</span></div>
-            <div class="city-time-desc" id="clock-${cityName.replace(/\s+/g, '')}">${cityTimeStr}</div>
+            <div class="city-time-desc" id="${sanitizeClockId(cityName)}">${cityTimeStr}</div>
         `;
 
         const tilesContainer = document.createElement("div");
@@ -332,7 +350,7 @@ function setupEventListeners() {
 
     // Share View Link Functionality
     document.getElementById("share-btn").addEventListener("click", () => {
-        const dateStr = selectedDate.toISOString().split('T')[0];
+        const dateStr = formatLocalDateInput(selectedDate);
         const citiesParam = encodeURIComponent(selectedCities.join(','));
         const shareUrl = `${window.location.origin}${window.location.pathname}?cities=${citiesParam}&date=${dateStr}&hour=${selectedHourIndex}`;
 
@@ -347,7 +365,8 @@ function setupEventListeners() {
         selectedCities = ["New York", "London", "San Francisco", "Tokyo", "India"];
         selectedDate = new Date();
         selectedHourIndex = 0;
-        document.getElementById("meeting-date").value = selectedDate.toISOString().split('T')[0];
+        const dateInput = document.getElementById("meeting-date");
+        if (dateInput) dateInput.value = formatLocalDateInput(selectedDate);
         window.history.replaceState({}, document.title, window.location.pathname);
         renderGrid();
     });
@@ -382,23 +401,26 @@ function initPWA() {
     window.addEventListener('beforeinstallprompt', (e) => {
         e.preventDefault();
         deferredPrompt = e;
-        installBtn.style.display = 'inline-block';
+        if (installBtn) installBtn.style.display = 'inline-block';
     });
 
-    installBtn.addEventListener('click', () => {
-        if (deferredPrompt) {
-            deferredPrompt.prompt();
-            deferredPrompt.userChoice.then((choiceResult) => {
-                if (choiceResult.outcome === 'accepted') {
-                    console.log('App Installed Successfully');
-                }
-                deferredPrompt = null;
-            });
-        } else {
-            alert("App install prompt local file (file://) par direct trigger nahi hota. Jab website Vercel par live (HTTPS) ho jayegi, tab ye button ekdam perfectly kaam karega!");
-        }
-    });
+    if (installBtn) {
+        installBtn.addEventListener('click', () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('App Installed Successfully');
+                    }
+                    deferredPrompt = null;
+                });
+            } else {
+                alert("App install prompt local file (file://) par direct trigger nahi hota. Jab website Vercel par live (HTTPS) ho jayegi, tab ye button ekdam perfectly kaam karega!");
+            }
+        });
+    }
 }
+
 // pSEO City-to-City Dynamic Time Converter
 function updateConversions() {
     const path = window.location.pathname;

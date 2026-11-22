@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://globaltimeanddate.com/sitemap.xml
+Sitemap: https://globaldateandtime.vercel.app/sitemap.xml

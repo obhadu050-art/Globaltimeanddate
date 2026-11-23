@@ -25,6 +25,10 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://globaldateandtime.vercel.app/est-to-ist.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://globaldateandtime.vercel.app/london-to-tokyo.html</loc>
     <priority>0.8</priority>
   </url>
